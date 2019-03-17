@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-    private static Logger LOG = LogManager.getLogger(StringCalculator.class);
+    private static Logger LOG = LogManager.getLogger(StringCalculator.class.getName());
     public StringCalculator() {
     }
     
