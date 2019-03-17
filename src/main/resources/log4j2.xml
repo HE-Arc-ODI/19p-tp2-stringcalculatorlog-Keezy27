@@ -2,13 +2,19 @@
 <configuration debug="true">
 <Appenders>
     <Console name="console" target="SYSTEM_OUT">
-        <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} %-0level %logger{36}.%M() @%L - %msg%n}{INFO=black, WARN=yellow, FATAL=red}" disableAnsi="false"/>
+        <PatternLayout pattern="%highlight{%d{dd/MM/yyyy HH:mm:ss} [%-5level] %logger{6} - %msg%n}{INFO=black, WARN=yellow, FATAL=red}" disableAnsi="false"/>
     </Console>
+    <File name="fileLogger" fileName="logs/infos.log">
+        <PatternLayout>
+            <pattern>%d{dd/MM/yyyy HH:mm:ss} [%-5level] %logger{6} - %msg%n</pattern>
+        </PatternLayout>
+    </File>
 </Appenders>
 
 <Loggers>
-    <Root level="warn" additivity="false">
-        <AppenderRef ref="console" />
+    <Root level="trace" additivity="false">
+        <appender-ref ref="console"/>
+        <appender-ref ref="fileLogger"/>
     </Root>
 </Loggers>
 </configuration>
