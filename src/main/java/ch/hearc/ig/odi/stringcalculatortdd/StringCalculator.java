@@ -1,13 +1,15 @@
 package ch.hearc.ig.odi.stringcalculatortdd;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-
+    private static Logger LOG = LogManager.getLogger(StringCalculator.class.getName());
     public StringCalculator() {
     }
     
@@ -36,10 +38,14 @@ public class StringCalculator {
             //test if the numbers array is not empty
             if (!(number.trim().length() == 0)) {
                 Integer numberInt = Integer.parseInt(number);
-                if (numberInt < 0)
+                if (numberInt < 0) {
+                    LOG.fatal("Number < 0 : " + numberInt);
                     negativeNumbers.add(numberInt);
-                else if (numberInt <= 1000)
+                } else if (numberInt <= 1000) {
                     returnValue += numberInt;
+                } else {
+                    LOG.warn("Number > 1000 : " + numberInt);
+                }
             }
         }
 
@@ -72,6 +78,7 @@ public class StringCalculator {
             returnDelimiter = numbers.substring(beginDelimiterIndex, endDelimiterIndex);
         }
 
+        LOG.info("Delemiter is '" + returnDelimiter +"'");
         return returnDelimiter;
     }
 }
