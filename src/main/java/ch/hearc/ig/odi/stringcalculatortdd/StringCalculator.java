@@ -77,7 +77,8 @@ public class StringCalculator {
             //there is only one delimiter
             returnDelimiter = numbers.substring(beginDelimiterIndex, endDelimiterIndex);
         }
-        LOG.info("personalized delemiter : " + returnDelimiter);
+
+        LOG.info("Delemiter is '" + returnDelimiter +"'");
         return returnDelimiter;
     }
 }
